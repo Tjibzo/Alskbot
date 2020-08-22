@@ -89,7 +89,7 @@ async def mention(ctx,destinator : discord.Member):
 
 
 # donner le token pour qu'il se connecte
-token = "NzE0NDc4MTQzNjMyNzAzNTEw.XsvPnw.ldCYlcMEpMrXdzqWc4S8jRDw3_0"
+token = "[Entrer son token]"
 
 # phrase
 print("Lancement du bot...")
