@@ -73,6 +73,12 @@ async def on_raw_reaction_remove(payload):
         await membre.remove_roles(python_role)
         await membre.send("Tu perds le grade Python !")
 
+
+@bot.event
+async def on_member_join(member):
+    unvalidate_role = discord.utils.get(member.guild.roles, name='PasValidé')
+    await member.add_roles(unvalidate_role)
+    await member.send(f"Bienvenue {member.mention} sur le server ! N'hésite pas à faire la commande `regles` !")
         
 @bot.command()
 async def mention(ctx,destinator : discord.Member):

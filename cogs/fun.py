@@ -3,12 +3,14 @@ from discord.ext import commands
 import random
 
 avis = [
-    "Euh... oui, pourquoi pas....",
-    "Je ne vois pas de mal à ça :woman_shrugging:",
-    "Oh ! Surtout pas, t'a vraiment crû que j'allais te laisser faire ça ???",
-    "*S'enfuit loin*",
-    "Bah j'en sais rien moi.... Pourquoi tu me le demande ?",
-    "Fait ce qu'il te plaira le plus ^^"
+    "Euh... oui, pourquoi pas....",#Oui
+    "Je ne vois pas de mal à ça :woman_shrugging:",#Oui
+    "Oh ! Surtout pas, t'a vraiment crû que j'allais te laisser faire ça ??? :cold_sweat:",#Non
+    "*S'enfuit loin*",#Non
+    "Bah j'en sais rien moi.... Pourquoi tu me le demande ?",#Neutre
+    "Fait ce qu'il te plaira le plus ^^",#Neutre
+    "Je suis d'accord avec le fait de ne pas être d'accord d'être d'accord avec toi",#Non
+    "Je ne suis pas dans la capacité de délivrer mon désacord sur cette proposition"#Oui
 ]
 
 

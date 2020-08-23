@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import random
-from discord.ext.commands import has_permissions, MissingPermissions
+from discord.ext.commands import has_permissions, MissingPermissions, CheckFailure, BadArgument
 
 class Admin(commands.Cog):
 
@@ -101,6 +101,20 @@ class Admin(commands.Cog):
         role = discord.utils.get(ctx.guild.roles, name = 'Muted')
         await member.remove_roles(role)
         embed = discord.Embed(title="Utilisateur dé-muté !",description=f"**{writer}** a dé-muté **{member}** !")
+        await ctx.send(embed=embed)
+        return
+
+
+    @commands.command(
+        name = 'kick',
+    description = 'Cette commande permet de virer un utilisateur du server',
+    usage = '@mention <reason>'
+    )
+    @commands.has_permissions(kick_members=True)
+    async def kick_command(self, ctx, *,member : discord.Member, reason = None):
+        writer = ctx.message.author
+        await ctx.guild.kick(member, reason = reason)
+        embed = discord.Embed(title="Utilisateur expulsé !",description=f"{writer} a expulsé {member} !\nRaison : {reason}")
         await ctx.send(embed=embed)
         return
 
