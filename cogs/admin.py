@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import random
+from discord.ext.commands import has_permissions, MissingPermissions
 
 class Admin(commands.Cog):
 
@@ -13,6 +14,7 @@ class Admin(commands.Cog):
         usage = "[role]",
         aliases = ['gr']
     )
+    @commands.has_permissions(manage_roles=True)
     async def getrole_command(self,ctx, role: discord.Role):
         if role in ctx.author.roles:
             await ctx.author.remove_roles(role)
@@ -25,9 +27,10 @@ class Admin(commands.Cog):
 
     @commands.command(
         name = "role",
-        description = "Cette commande permet de donner un rôle à un utilisateur",
+        description = "Cette commande permet de donner un rôle à un utilisateur.",
         usage = "[role] @mention"
     )
+    @commands.has_permissions(manage_roles=True)
     async def role_command(self,ctx, role:discord.Role):
         user = ctx.message.mentions[0]
         if role in user.roles:
@@ -44,6 +47,7 @@ class Admin(commands.Cog):
         description = "Cette commande permet de valider un nouvel arrivant (Nécessite les rôles `@Validé` et `@PasValidé` de présents sur le server.)",
         usage = "@mention"
     )
+    @commands.has_permissions(manage_roles=True)
     async def validate_command(self,ctx):
         user = ctx.message.mentions[0]
         unvalidate_role = discord.utils.get(ctx.guild.roles, name='PasValidé')
@@ -60,6 +64,7 @@ class Admin(commands.Cog):
         usage = "@mention",
         aliases = ['block']
     )
+    @commands.has_permissions(manage_roles=True)
     async def unvalidate_command(self,ctx):
         user = ctx.message.mentions[0]
         unvalidate_role = discord.utils.get(ctx.guild.roles, name='PasValidé')
@@ -75,7 +80,7 @@ class Admin(commands.Cog):
         description = "Cette commande permet de mute qeulqu'un (Nécessite le rôle `@Muted` de présent sur le server.)",
         usage = "@mention"
     )
-    @commands.has_role('Dev')
+    @commands.has_permissions(manage_messages=True)
     async def mute_command(self,ctx,member : discord.Member):
         writer = ctx.message.author
         role = discord.utils.get(ctx.guild.roles, name='Muted')
@@ -90,8 +95,8 @@ class Admin(commands.Cog):
         description = "Cette commande permet d'enlever le mute d'un utilisateur (Nécessite le rôle `@Muted` de présent sur le server.)",
         usage = "@mention"
     )
-    @commands.has_role('Dev')
-    async def mute_command(self,ctx,member : discord.Member):
+    @commands.has_permissions(manage_messages=True)
+    async def unmute_command(self,ctx,member : discord.Member):
         writer = ctx.message.author
         role = discord.utils.get(ctx.guild.roles, name = 'Muted')
         await member.remove_roles(role)

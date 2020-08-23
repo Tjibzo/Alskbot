@@ -28,11 +28,39 @@ class Basic(commands.Cog):
 
     @commands.command(
         name = "test",
-        description = "Cette commande permet de vérifier que je fonctionne bien !"
+        description = "Cette commande permet de vérifier que je fonctionne bien !",
+        aliases = ['hello','bonjour','helloworld']
     )
     async def test_command(self,ctx):
-        await ctx.send("Je fonctionne ! ^^")
+        await ctx.send("Je suis là ! ^^")
         return
+
+
+    @commands.command(
+        name = 'alskbot',
+        description = "Cette commande permet d'en savoir plus sur moi !",
+        aliases = ['description']
+    )
+    async def inutilite_command(self,ctx):
+        await ctx.send("""Hey !\nJe suis le bot Alskbot !\n""" \
+        """Mon but est de rajouter des commandes utiles à Discord, comme des commandes d'Administration, de messages ou encore de fun !\n""" \
+            """De base, j'ai été créée (oui féminin parce que pourquoi pas) par Tjibzo pour apprendre les bases de l'API Discord.py.\n"""\
+                """Je suis un bot "modulaire" qui peut se voir rajouter des fonctionnalités en fonction des besoins des utilisateurs.\n"""\
+                    """Mon fonctionnement nécessite la présence des rôles `@Muted`, `@PasValidé` et `@Validé`, afin de faire fonctionner les commandes Admin.\n"""\
+                        """Si vous voulez voir l'avancement de mon développement, il est disponible ici : https://trello.com/b/vcRBHuC3\n"""\
+                            """Que dire de plus ? Amusez vous bien ? *(je suppose)*""")
+        return
+
+
+    @commands.command(
+        name = 'github',
+        description = "Cette commande permet d'avoir le lien de la repo GitHub qui contient mon code !",
+        aliases = ['code','git']
+    )
+    async def github_command(self,ctx):
+        await ctx.send("Voici le lien de mon code !\nhttps://github.com/Tjibzo/Alskbot")
+        return
+
 
 
 def setup(bot):

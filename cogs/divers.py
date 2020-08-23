@@ -17,7 +17,7 @@ class Divers(commands.Cog):
         # récupère le nom
         pseudo = new_member.mention
         # exécuter le message de bienvenue
-        await ctx.send(f"Bienvenue à {pseudo} sur le serveur discord ! N'oublie pas de faire la commande `!regles`")
+        await ctx.send(f"Bienvenue à {pseudo} sur le serveur discord ! N'oublie pas de faire la commande `$regles`")
         return
 
 
@@ -36,7 +36,11 @@ class Divers(commands.Cog):
         description = "Cette commande sers à en savoir plus sur mon créateur !"
     )
     async def tjibzo_command(self,ctx):
-        await ctx.send("Mon créateur est Tjibzo. Elle m'a créé parce qu'elle se faisait chier.\nJe reviens d'une logue période d'absence parce qu'elle ne savais pas mettre à jour l'API Discord....")
+        await ctx.send("Mon créateur est Tjibzo.\n" \
+            "Elle est passionnée par l'informatique, la physique et les maths. Elle aime aussi faire des montages vidéos.\n" \
+                "Ses deux devises sont :\n" \
+                    "> Ce qui ne me tue pas me rend plus fort(e)\n" \
+                        "> Je gagne ou j'apprends, mais je ne perd jamais")
         return
 
 

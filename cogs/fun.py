@@ -2,6 +2,16 @@ import discord
 from discord.ext import commands
 import random
 
+avis = [
+    "Euh... oui, pourquoi pas....",
+    "Je ne vois pas de mal à ça :woman_shrugging:",
+    "Oh ! Surtout pas, t'a vraiment crû que j'allais te laisser faire ça ???",
+    "*S'enfuit loin*",
+    "Bah j'en sais rien moi.... Pourquoi tu me le demande ?",
+    "Fait ce qu'il te plaira le plus ^^"
+]
+
+
 class Fun(commands.Cog):
 
     def __init__(self,bot):
@@ -141,6 +151,18 @@ class Fun(commands.Cog):
             await ctx.send(content = f"Hmmm, ce/cette **{text}** était très bon(ne) ! Merci {writer} !!! ^^")
             await ctx.send(content = "https://tenor.com/view/bear-hungry-food-cute-gif-12983510")
             pass
+        return
+
+
+    @commands.command(
+        name = 'avis',
+        description = "Cette commande permet de connaître l'avis du bot !",
+        aliases = ['advice'],
+        usage = '<text>'
+    )
+    async def avis_command(self,ctx):
+        mess = random.choice(avis)
+        await ctx.send(mess)
         return
 
 def setup(bot):

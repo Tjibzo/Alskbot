@@ -8,6 +8,8 @@ from discord.ext import commands
 
 import random
 
+import jeton
+
 # une commande
 # !regles =regles #regles
 
@@ -79,9 +81,11 @@ async def mention(ctx,destinator : discord.Member):
     robot = bot.user.name + "#" + bot.user.discriminator
     await ctx.send(f"Le pingé est {pseudo}, celui qui as pingé est {writer}")
     await ctx.send(f"{destinator} a été pingé - Signé {robot}")
-    if writer == pseudo:
+    if destinator == None:
+        await ctx.send("A qui essayes-tu de faire un câlin ? Réessaye en le mentionnant !")
+    elif destinator.user.idLong == ctx.author.idLong:
         await ctx.send("Auto-ping")
-    elif destinator == robot:
+    elif destinator.user.idLong == ctx.jda.selfUser.idLong:
         await ctx.send("Bot-ping :smirk:")
     else:
         await ctx.send("Ping classique")
@@ -89,7 +93,7 @@ async def mention(ctx,destinator : discord.Member):
 
 
 # donner le token pour qu'il se connecte
-token = "[Entrer son token]"
+token = jeton.code
 
 # phrase
 print("Lancement du bot...")
