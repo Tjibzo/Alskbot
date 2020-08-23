@@ -33,7 +33,7 @@ async def on_ready():
         bot.load_extension(cog)
         print(cog)
     await bot.change_presence(status=discord.Status.online,
-                              activity=discord.Game("Aussi inutile que mon créateur ($help)"))
+                              activity=discord.Activity(type=discord.ActivityType.watching, name = "l'humanité se détruire ($help)"))
 
 
 # détecter quand quelqu'un ajoute un emoji sur un message
