@@ -1,5 +1,40 @@
 from discord.ext import commands
 from datetime import datetime as d
+import discord
+import random
+
+
+colors = [
+  0x000000,
+  0xFFFFFF,
+  0x1ABC9C,
+  0x2ECC71,
+  0x3498DB,
+  0x9B59B6,
+  0xE91E63,
+  0xF1C40F,
+  0xE67E22,
+  0xE74C3C,
+  0x95A5A6,
+  0x34495E,
+  0x11806A,
+  0x1F8B4C,
+  0x206694,
+  0x71368A,
+  0xAD1457,
+  0xC27C0E,
+  0xA84300,
+  0x992D22,
+  0x979C9F,
+  0x7F8C8D,
+  0xBCC0C0,
+  0x2C3E50,
+  0x7289DA,
+  0x99AAB5,
+  0x2C2F33,
+  0x23272A
+]
+
 
 class Basic(commands.Cog):
 
@@ -53,12 +88,15 @@ class Basic(commands.Cog):
 
 
     @commands.command(
-        name = 'github',
+        name = 'info',
         description = "Cette commande permet d'avoir le lien de la repo GitHub qui contient mon code !",
-        aliases = ['code','git']
+        aliases = ['code','git','github','trello','dev','developpement']
     )
     async def github_command(self,ctx):
-        await ctx.send("Voici le lien de mon code !\nhttps://github.com/Tjibzo/Alskbot")
+        color_list = [c for c in colors]
+        color = random.choice(color_list)
+        embed = discord.Embed(title="Info sur le développement du bot", description=f"\n**GitHub :** https://github.com/Tjibzo/Alskbot\n\n**Trello :** https://trello.com/b/vcRBHuC3", color=color)
+        await ctx.send(embed=embed)
         return
 
 

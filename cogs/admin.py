@@ -85,7 +85,7 @@ class Admin(commands.Cog):
         writer = ctx.message.author
         role = discord.utils.get(ctx.guild.roles, name='Muted')
         await member.add_roles(role)
-        embed = discord.Embed(title="Utilisateur muté !", description=f"**{member}** a été muté par **{writer}**")
+        embed = discord.Embed(title="Utilisateur muté !", description=f"**{member}** a été muté par **{writer}**",color=0xE74C3C)
         await ctx.send(embed=embed)
         return
 
@@ -100,7 +100,7 @@ class Admin(commands.Cog):
         writer = ctx.message.author
         role = discord.utils.get(ctx.guild.roles, name = 'Muted')
         await member.remove_roles(role)
-        embed = discord.Embed(title="Utilisateur dé-muté !",description=f"**{writer}** a dé-muté **{member}** !")
+        embed = discord.Embed(title="Utilisateur dé-muté !",description=f"**{writer}** a dé-muté **{member}** !",color=0x2ECC71)
         await ctx.send(embed=embed)
         return
 
@@ -114,7 +114,7 @@ class Admin(commands.Cog):
     async def kick_command(self, ctx, *,member : discord.Member, reason = None):
         writer = ctx.message.author
         await ctx.guild.kick(member, reason = reason)
-        embed = discord.Embed(title="Utilisateur expulsé !",description=f"{writer} a expulsé {member} !\nRaison : {reason}")
+        embed = discord.Embed(title="Utilisateur expulsé !",description=f"{writer} a expulsé {member} !\nRaison : {reason}",color=0xE74C3C)
         await ctx.send(embed=embed)
         return
 
