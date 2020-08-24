@@ -3,6 +3,7 @@ from discord.ext import commands
 import random
 from discord.ext.commands import has_permissions, MissingPermissions, CheckFailure, BadArgument
 
+
 class Admin(commands.Cog):
 
     def __init__(self,bot):
@@ -15,7 +16,9 @@ class Admin(commands.Cog):
         aliases = ['gr']
     )
     @commands.has_permissions(manage_roles=True)
-    async def getrole_command(self,ctx, role: discord.Role):
+    async def getrole_command(self,ctx,role: discord.Role):
+        membre = ctx.message.author
+        print(f"{membre} used the 'getrole' command =>")
         if role in ctx.author.roles:
             await ctx.author.remove_roles(role)
             await ctx.send(f"Le rôle {role} a été supprimé à {ctx.message.author.mention}")
@@ -31,7 +34,9 @@ class Admin(commands.Cog):
         usage = "[role] @mention"
     )
     @commands.has_permissions(manage_roles=True)
-    async def role_command(self,ctx, role:discord.Role):
+    async def role_command(self,ctx,role:discord.Role):
+        membre = ctx.message.author
+        print(f"{membre} used the 'role' command")
         user = ctx.message.mentions[0]
         if role in user.roles:
             await user.remove_roles(role)
@@ -49,6 +54,8 @@ class Admin(commands.Cog):
     )
     @commands.has_permissions(manage_roles=True)
     async def validate_command(self,ctx):
+        membre = ctx.message.author
+        print(f"{membre} used the 'validate' command")
         user = ctx.message.mentions[0]
         unvalidate_role = discord.utils.get(ctx.guild.roles, name='PasValidé')
         validate_role = discord.utils.get(ctx.guild.roles, name='Validé')
@@ -66,6 +73,8 @@ class Admin(commands.Cog):
     )
     @commands.has_permissions(manage_roles=True)
     async def unvalidate_command(self,ctx):
+        membre = ctx.message.author
+        print(f"{membre} used the 'unvalidate' command")
         user = ctx.message.mentions[0]
         unvalidate_role = discord.utils.get(ctx.guild.roles, name='PasValidé')
         validate_role = discord.utils.get(ctx.guild.roles, name='Validé')
@@ -82,6 +91,8 @@ class Admin(commands.Cog):
     )
     @commands.has_permissions(manage_messages=True)
     async def mute_command(self,ctx,member : discord.Member):
+        membre = ctx.message.author
+        print(f"{membre} used the 'mute' command")
         writer = ctx.message.author
         role = discord.utils.get(ctx.guild.roles, name='Muted')
         await member.add_roles(role)
@@ -97,6 +108,8 @@ class Admin(commands.Cog):
     )
     @commands.has_permissions(manage_messages=True)
     async def unmute_command(self,ctx,member : discord.Member):
+        membre = ctx.message.author
+        print(f"{membre} used the 'unmute' command")
         writer = ctx.message.author
         role = discord.utils.get(ctx.guild.roles, name = 'Muted')
         await member.remove_roles(role)
@@ -111,12 +124,24 @@ class Admin(commands.Cog):
     usage = '@mention <reason>'
     )
     @commands.has_permissions(kick_members=True)
-    async def kick_command(self, ctx, *,member : discord.Member, reason = None):
+    async def kick_command(self,ctx, *,member : discord.Member):
         writer = ctx.message.author
-        await ctx.guild.kick(member, reason = reason)
-        embed = discord.Embed(title="Utilisateur expulsé !",description=f"{writer} a expulsé {member} !\nRaison : {reason}",color=0xE74C3C)
-        await ctx.send(embed=embed)
-        return
+        if member.id == 373731794635456512:
+            await ctx.send("Attend, tu essaye de kick mon créateur ? T'a cru quoi là ???")
+            await ctx.send("https://tenor.com/Koqy.gif")
+            writer = ctx.message.author
+            await ctx.guild.kick(writer, reason = "T'avais pas qu'a essayer de kick Tjibzo....")
+            embed = discord.Embed(title="Utilisateur expulsé !",description=f"**{writer}** a expulsé **{member}** !\n**Raison :** T'avais pas qu'a essayer de kick Tjibzo....",color=0xE74C3C)
+            await ctx.send(embed=embed)
+            return
+        else :
+            membre = ctx.message.author
+            print(f"{membre} used the 'kick' command")
+            writer = ctx.message.author
+            await ctx.guild.kick(member)
+            embed = discord.Embed(title="Utilisateur expulsé !",description=f"**{writer}** a expulsé **{member}** !",color=0xE74C3C)
+            await ctx.send(embed=embed)
+            return
 
 
 

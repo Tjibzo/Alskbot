@@ -49,6 +49,8 @@ class Basic(commands.Cog):
         aliases = ['p']
     )
     async def ping_command(self,ctx):
+        membre = ctx.message.author
+        print(f"{membre} used the 'ping' command")
         start = d.timestamp(d.now()) 
         #Prend l'horodatage de quand la commande a été utilisée
 
@@ -67,6 +69,8 @@ class Basic(commands.Cog):
         aliases = ['hello','bonjour','helloworld']
     )
     async def test_command(self,ctx):
+        membre = ctx.message.author
+        print(f"{membre} used the 'test' command")
         await ctx.send("Je suis là ! ^^")
         return
 
@@ -77,6 +81,8 @@ class Basic(commands.Cog):
         aliases = ['description']
     )
     async def inutilite_command(self,ctx):
+        membre = ctx.message.author
+        print(f"{membre} used the 'alskbot' command")
         await ctx.send("""Hey !\nJe suis le bot Alskbot !\n""" \
         """Mon but est de rajouter des commandes utiles à Discord, comme des commandes d'Administration, de messages ou encore de fun !\n""" \
             """De base, j'ai été créée (oui féminin parce que pourquoi pas) par Tjibzo pour apprendre les bases de l'API Discord.py.\n"""\
@@ -93,6 +99,8 @@ class Basic(commands.Cog):
         aliases = ['code','git','github','trello','dev','developpement']
     )
     async def github_command(self,ctx):
+        membre = ctx.message.author
+        print(f"{membre} used the 'info' command")
         color_list = [c for c in colors]
         color = random.choice(color_list)
         embed = discord.Embed(title="Info sur le développement du bot", description=f"\n**GitHub :** https://github.com/Tjibzo/Alskbot\n\n**Trello :** https://trello.com/b/vcRBHuC3", color=color)

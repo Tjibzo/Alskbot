@@ -10,6 +10,8 @@ import random
 
 import jeton
 
+import asyncio
+
 # une commande
 # !regles =regles #regles
 
@@ -35,7 +37,7 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.online,
                               activity=discord.Activity(type=discord.ActivityType.watching, name = "l'humanité périr ($help)"))
 
-
+"""
 # détecter quand quelqu'un ajoute un emoji sur un message
 @bot.event
 async def on_raw_reaction_add(payload):
@@ -72,7 +74,7 @@ async def on_raw_reaction_remove(payload):
         print("Grade supprimé !")
         await membre.remove_roles(python_role)
         await membre.send("Tu perds le grade Python !")
-
+"""
 
 @bot.event
 async def on_member_join(member):
@@ -84,18 +86,38 @@ async def on_member_join(member):
 async def mention(ctx,destinator : discord.Member):
     writer = ctx.message.author.mention
     pseudo = destinator.mention
+    print(destinator)
+    print(ctx.author)
+    print(pseudo)
     robot = bot.user.name + "#" + bot.user.discriminator
     await ctx.send(f"Le pingé est {pseudo}, celui qui as pingé est {writer}")
     await ctx.send(f"{destinator} a été pingé - Signé {robot}")
     if destinator == None:
-        await ctx.send("A qui essayes-tu de faire un câlin ? Réessaye en le mentionnant !")
-    elif destinator.user.idLong == ctx.author.idLong:
+        await ctx.send("Manque la mention")
+    elif destinator == ctx.author:
         await ctx.send("Auto-ping")
-    elif destinator.user.idLong == ctx.jda.selfUser.idLong:
+    elif pseudo == '<@714478143632703510>':
         await ctx.send("Bot-ping :smirk:")
     else:
         await ctx.send("Ping classique")
     return
+
+
+@bot.command()
+async def mwahahaha(ctx):
+    await ctx.message.delete()
+    await ctx.send("https://tenor.com/view/evil-laugh-laughing-dark-side-muahaha-gif-8949456")
+
+
+@bot.command()
+async def fs(ctx):
+    counter = 5
+    await ctx.send("Je vais faire un décompte et envoyer 'Coucou' dans 5 secondes")
+    while counter>0:
+        await ctx.send(counter)
+        counter -= 1
+        await asyncio.sleep(1)
+    await ctx.send("Coucou")
 
 
 # donner le token pour qu'il se connecte

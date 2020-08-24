@@ -45,6 +45,9 @@ class Embed(commands.Cog):
     )
     async def embed_command(self,ctx):
 
+        membre = ctx.message.author
+        print(f"{membre} used the 'embed' command")
+
         #Défini une fonction qui valide le message reçu par le bot
         def check(ms):
             #Cherche le message envoyé dans le salon dans lequel a été exécuté la commande
@@ -100,6 +103,10 @@ class Embed(commands.Cog):
         usage = 'cog'
     )
     async def help_command(self, ctx, cog='all'):
+
+        membre = ctx.message.author
+        print(f"{membre} used the 'help' command")
+
         #le troisième paramètre antre en jeu quand seulement un argument est donné par l'utilisateur
 
         #prépare l'intégration
