@@ -95,7 +95,7 @@ class Embed(commands.Cog):
         #Nous devons spécifier le contenu à 'None' puisque l'on ne veux pas que ça reste à 'Génération de l'intégration'
         return
 
-
+    """
     @commands.command(
         name = 'help',
         description = 'La commande pour avoir la liste des commandes disponibles !',
@@ -197,6 +197,7 @@ class Embed(commands.Cog):
         await ctx.send(f"{membre.name}, la liste des commandes t'a été envoyée, vérifie tes MP !")
 
         return
+    """
 
 
 
