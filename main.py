@@ -23,7 +23,7 @@ bot = commands.Bot(
     case_insensitive = True
     )
 
-cogs = ['cogs.basic', 'cogs.embed', 'cogs.fun', 'cogs.divers', 'cogs.admin']
+cogs = ['cogs.basic', 'cogs.embed', 'cogs.fun', 'cogs.divers', 'cogs.admin','cogs.casino']
 
 # détecter quand le bot est prêt ("allumé")
 @bot.event
@@ -80,7 +80,13 @@ async def on_raw_reaction_remove(payload):
 async def on_member_join(member):
     unvalidate_role = discord.utils.get(member.guild.roles, name='PasValidé')
     await member.add_roles(unvalidate_role)
-    await member.send(f"Bienvenue {member.mention} sur le server ! N'hésite pas à faire la commande `regles` !")
+    channel = bot.get_channel(743478642385879154)
+    await channel.send(f"Bienvenue {member.mention} sur le server ! N'hésite pas à faire la commande `regles` !")
+
+@bot.event
+async def on_member_remove(member):
+    channel = bot.get_channel(743478642385879154)
+    await channel.send(f"{member} nous a quitté pour suivre une autre voie de la Force....")
         
 @bot.command()
 async def mention(ctx,destinator : discord.Member):

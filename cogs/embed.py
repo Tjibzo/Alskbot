@@ -193,7 +193,8 @@ class Embed(commands.Cog):
                 await ctx.send('Commande spécifié invalide.\nUtilise la commande `help` pour lister toutes les commandes.')
                 return
 
-        await ctx.send(embed=help_embed)
+        await membre.send(embed=help_embed)
+        await ctx.send(f"{membre.name}, la liste des commandes t'a été envoyée, vérifie tes MP !")
 
         return
 

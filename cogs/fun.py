@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import random
+import math
 
 avis = [
     "Euh... oui, pourquoi pas....",#Oui
@@ -172,7 +173,7 @@ class Fun(commands.Cog):
     async def feed_command(self,ctx):
         membre = ctx.message.author
         envoi = ctx.message.content
-        print(f"{membre} used the 'say' command => {envoi}")
+        print(f"{membre} used the 'feed' command => {envoi}")
 
         writer = ctx.message.author.mention
         msg = ctx.message.content
@@ -223,6 +224,30 @@ class Fun(commands.Cog):
         mess = random.choice(avis)
         await ctx.send(mess)
         return
+
+
+    @commands.command(
+        name = "russianroll",
+        description = "Cette commande permet de jouer à la roulette russe !",
+        aliases = ['rr','russian']
+    )
+    async def russianroll_command(self,ctx):
+        membre = ctx.message.author
+        envoi = ctx.message.content
+        print(f"{membre} used the 'russianroll' command")
+
+        number = random.randint(1,12)
+        if (number/2 == 1) or (number/2 == 2) or (number/2 == 3) or (number/2 == 4):
+            await ctx.send(f"{membre.name} a perri en tentant de jouer avec la vie...")
+            await ctx.send("https://tenor.com/binWd.gif")
+            return
+        else:
+            await ctx.send(f"{membre.name} a survécu, la Force est avec lui !")
+            await ctx.send("https://tenor.com/beT1P.gif")
+            return
+
+
+        
         
 
 def setup(bot):
