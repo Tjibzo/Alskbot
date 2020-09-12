@@ -1,0 +1,14 @@
+{
+  "name": "AlskBot",
+  "version": "1.0.0",
+  "description": "Un bot, parmi tant d'autres...."
+  "main": "main.py"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+   },
+   "author": "Tjibzo",
+   "license: "",
+   "dependencies": {
+    "discord.py": "^1.5.0a"
+   }
+}
