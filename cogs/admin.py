@@ -15,16 +15,17 @@ class Admin(commands.Cog):
         usage = "[role]",
         aliases = ['gr']
     )
-    @commands.has_permissions(manage_roles=True)
     async def getrole_command(self,ctx,role: discord.Role):
         membre = ctx.message.author
-        print(f"{membre} used the 'getrole' command =>")
+        print(f"{membre} used the 'getrole' command")
         if role in ctx.author.roles:
             await ctx.author.remove_roles(role)
-            await ctx.send(f"Le rôle {role} a été supprimé à {ctx.message.author.mention}")
+            await membre.send(f"Le rôle {role} a été supprimé à {ctx.message.author.mention}")
+            await ctx.message.delete()
         else:
             await ctx.author.add_roles(role)
-            await ctx.send(f"Le rôle {role} a été ajouté à {ctx.message.author.mention}")
+            await membre.send(f"Le rôle {role} a été ajouté à {ctx.message.author.mention}")
+            await ctx.message.delete()
         return
 
 
@@ -40,10 +41,12 @@ class Admin(commands.Cog):
         user = ctx.message.mentions[0]
         if role in user.roles:
             await user.remove_roles(role)
-            await ctx.send(f"Le rôle {role.name} a été supprimé à {user.name}")
+            await ctx.message.delete()
+            #await ctx.send(f"Le rôle {role.name} a été supprimé à {user.name}")
         else:
             await user.add_roles(role)
-            await ctx.send(f"Le rôle {role.name} a été ajouté à {user.name}")
+            await ctx.message.delete()
+            #await ctx.send(f"Le rôle {role.name} a été ajouté à {user.name}")
         return
 
 
