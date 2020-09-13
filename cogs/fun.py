@@ -115,7 +115,7 @@ class Fun(commands.Cog):
             await ctx.send(f"*Fait un câlin à {writer} en retour*")
             await ctx.send("https://media.giphy.com/media/3ornk0ndWxpVYILAVq/giphy.gif")
         else:
-            await ctx.send(f"Un câlin gratuit pour {pseudo} de la part de {writer} !")
+            await ctx.send(f"*{writer} fait un câlin à {pseudo} ^^*")
             await ctx.send("https://media.giphy.com/media/3ornk0ndWxpVYILAVq/giphy.gif")
         return
     

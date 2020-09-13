@@ -37,7 +37,8 @@ class Admin(commands.Cog):
     @commands.has_permissions(manage_roles=True)
     async def role_command(self,ctx,role:discord.Role):
         membre = ctx.message.author
-        print(f"{membre} used the 'role' command")
+        envoi = ctx.message.content
+        print(f"{membre} used the 'say' command => {envoi}")
         user = ctx.message.mentions[0]
         if role in user.roles:
             await user.remove_roles(role)

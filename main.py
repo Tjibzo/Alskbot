@@ -29,7 +29,7 @@ cogs = ['cogs.basic', 'cogs.embed', 'cogs.fun', 'cogs.divers', 'cogs.admin','cog
 @bot.event
 async def on_ready():
     print(f"Bot connecté en tant que {bot.user.name} - {bot.user.id}")
-    #bot.remove_command('help')
+    bot.remove_command('help')
     #Enlève la commande help
     for cog in cogs:
         bot.load_extension(cog)

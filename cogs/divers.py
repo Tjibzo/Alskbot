@@ -31,7 +31,7 @@ class Divers(commands.Cog):
     async def regles_command(self,ctx):
         membre = ctx.message.author
         print(f"{membre} used the 'regles' command")
-        await ctx.send("Les règles:\n1.Pas d'insultes\n2.Pas de double compte\n3.Pas de spam")
+        await ctx.send("Les règles:\n1.Pas d'insultes\n2.Pas de spam\n3.Pas de mode invisible (s'il vous plaît)")
         return
 
 

@@ -95,7 +95,6 @@ class Embed(commands.Cog):
         #Nous devons spécifier le contenu à 'None' puisque l'on ne veux pas que ça reste à 'Génération de l'intégration'
         return
 
-    """
     @commands.command(
         name = 'help',
         description = 'La commande pour avoir la liste des commandes disponibles !',
@@ -193,13 +192,12 @@ class Embed(commands.Cog):
                 await ctx.send('Commande spécifié invalide.\nUtilise la commande `help` pour lister toutes les commandes.')
                 return
 
+        await ctx.message.add_reaction(emoji='✉')
         await membre.send(embed=help_embed)
-        await ctx.send(f"{membre.name}, la liste des commandes t'a été envoyée, vérifie tes MP !")
+        await membre.send("N'hésite pas à taper `$help <catégorie>` pour avoir plus d'informations sur les commandes de la catégorie ! ^^")
 
         return
-    """
-
-
+    
 
 def setup(bot):
     bot.add_cog(Embed(bot))
